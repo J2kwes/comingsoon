@@ -4,6 +4,7 @@ const t1 = document.querySelector(".t1");
 const t2 = document.querySelector(".t2");
 const t3 = document.querySelector(".t3");
 const t4 = document.querySelector(".t4");
+const contactContainer = document.querySelector(".contact-container");
 
 const clearOpacity = (element, delay) => {
   setTimeout(function () {
@@ -13,20 +14,19 @@ const clearOpacity = (element, delay) => {
 
 /* This function animates the opacity from 0 to 1 or 1 to 0  */
 
-const setOpacity = (element, duration, v1, v2, delay) => {
+const setOpacity = (element, duration, value, resultValue, delay) => {
   setTimeout(function () {
-    let opacity = v1;
     let id = setInterval(frame, duration);
     function frame() {
-      if (opacity == v2) {
+      if (value == resultValue) {
         clearInterval(id);
       } else {
-        if (v1 < v2) {
-          opacity = opacity + 0.01;
-          element.style.opacity = opacity;
+        if (value < resultValue) {
+          value = value + 0.01;
+          element.style.opacity = value;
         } else {
-          opacity = opacity - 0.01;
-          element.style.opacity = opacity;
+          value = value - 0.01;
+          element.style.opacity = value;
         }
       }
     }
@@ -39,4 +39,5 @@ clearOpacity(t2, 3400);
 clearOpacity(t1, 3600);
 
 setOpacity(mainTitle, 10, 1, 0, 4200);
-setOpacity(wip, 20, 0, 1, 5300);
+setOpacity(wip, 20, 0.1, 1, 5300);
+setOpacity(contactContainer, 25, 0.1, 1, 8500);
